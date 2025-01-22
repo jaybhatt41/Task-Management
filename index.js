@@ -3,6 +3,7 @@ const express=require("express")
 const mongoose=require("mongoose")
 const bodyParser=require("body-parser")
 const categoryRoutes=require("./routes/categoryRoutes")
+const taskRoutes=require("./routes/taskRoutes")
 
 const app=express()
 const PORT=process.env.PORT
@@ -13,6 +14,7 @@ mongoose.connect(process.env.MONGO_URI
 ).then(()=>console.log("Connected to DB")).catch(error=>console.log("Error to connecting mongoDB",error));
 
 app.use("/category",categoryRoutes)
+app.use("/task",taskRoutes)
 
 app.listen(PORT,()=>{
     console.log(`Server is Running on PORT ${PORT}`);
